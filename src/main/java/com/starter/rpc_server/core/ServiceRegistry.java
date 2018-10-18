@@ -1,4 +1,4 @@
-package com.starter.rpc_server;
+package com.starter.rpc_server.core;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @author spuerKun
+ * 服务注册类
+ *
+ * @author jibingkun
  * @date 2018/10/8.
  */
 public class ServiceRegistry {
@@ -67,9 +69,6 @@ public class ServiceRegistry {
 
     /**
      * 在zk上创建节点
-     *
-     * @param zooKeeper
-     * @param data
      */
     private void createNode(ZooKeeper zooKeeper, String data) {
         byte[] bytes = data.getBytes();

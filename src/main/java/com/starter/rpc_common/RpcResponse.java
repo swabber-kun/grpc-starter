@@ -11,8 +11,11 @@ public class RpcResponse {
 
     private String requestId;
 
-    private Throwable error;
+    private Exception error;
 
     private Object result;
 
+    public boolean isError() {
+        return error == null;
+    }
 }

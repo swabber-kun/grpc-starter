@@ -10,24 +10,27 @@ package com.starter.proto;
  *
  * Protobuf type {@code helloworld.HelloRequest}
  */
-public  final class HelloRequest extends com.google.protobuf.GeneratedMessageV3 implements  HelloRequestOrBuilder {
-
+public  final class HelloRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
+    // @@protoc_insertion_point(message_implements:helloworld.HelloRequest)
+    HelloRequestOrBuilder {
+  // Use HelloRequest.newBuilder() to construct.
   private HelloRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private HelloRequest() {
     name_ = "";
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
-
   private HelloRequest(
       com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)  throws com.google.protobuf.InvalidProtocolBufferException {
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     this();
     int mutable_bitField0_ = 0;
     try {
@@ -505,4 +508,6 @@ public  final class HelloRequest extends com.google.protobuf.GeneratedMessageV3 
   public com.starter.proto.HelloRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+
