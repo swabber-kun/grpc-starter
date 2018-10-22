@@ -28,7 +28,7 @@ public class RpcProxy {
 
     public <T> T create(Class<?> interfaceClass) {
 
-        Proxy.newProxyInstance(interfaceClass.getClassLoader(),
+        Object obj = Proxy.newProxyInstance(interfaceClass.getClassLoader(),
                 new Class[]{interfaceClass},
                 new InvocationHandler() {
                     @Override
@@ -47,23 +47,25 @@ public class RpcProxy {
                             serverAddress = serviceDiscovery.discover();
                         }
 
-                        String[] array = serverAddress.split(":");
-                        String host = array[0];
-                        int port = Integer.parseInt(array[1]);
+                        if (serverAddress != null) {
+                            String[] array = serverAddress.split(":");
+                            String host = array[0];
+                            int port = Integer.parseInt(array[1]);
 
-                        // 初始化 RPC 客户端
-                        RpcClient client = new RpcClient(host, port);
+                            // 初始化 RPC 客户端
+                            RpcClient client = new RpcClient(host, port);
 
-                        // 通过 RPC客户端发送RPC请求并获取RPC响应
-                        RpcResponse response = client.sendMessage(request);
-                        if (response.isError()) {
-                            throw response.getError();
-                        } else {
-                            return response.getResult();
+                            // 通过 RPC客户端发送RPC请求并获取RPC响应
+                            RpcResponse response = client.sendMessage(request);
+                            if (response.isError()) {
+                                throw response.getError();
+                            } else {
+                                return response.getResult();
+                            }
                         }
+                        throw new RuntimeException();
                     }
                 });
-
-        return null;
+        return (T) obj;
     }
 }
